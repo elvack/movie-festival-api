@@ -66,9 +66,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}admin/auth/sign-in",
+									"raw": "{{base_url}}admins/auth/sign-in",
 									"host": [
-										"{{base_url}}admin"
+										"{{base_url}}admins"
 									],
 									"path": [
 										"auth",
@@ -94,9 +94,9 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}admin/auth/sign-out",
+									"raw": "{{base_url}}admins/auth/sign-out",
 									"host": [
-										"{{base_url}}admin"
+										"{{base_url}}admins"
 									],
 									"path": [
 										"auth",
@@ -136,12 +136,59 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}admin/movies",
+									"raw": "{{base_url}}admins/movies",
 									"host": [
-										"{{base_url}}admin"
+										"{{base_url}}admins"
 									],
 									"path": [
 										"movies"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Movie",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}users/movies?limit=10&page=1",
+									"host": [
+										"{{base_url}}users"
+									],
+									"path": [
+										"movies"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
 									]
 								}
 							},

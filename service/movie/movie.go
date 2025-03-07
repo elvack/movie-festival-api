@@ -8,6 +8,7 @@ import (
 type (
 	IService interface {
 		Create(reqBody *movieModel.CreateReqBody) (err error)
+		List(reqQuery *movieModel.ListReqQuery) (resData []movieModel.ListResData, count int64, err error)
 	}
 
 	service struct {

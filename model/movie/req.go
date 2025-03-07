@@ -7,4 +7,10 @@ type (
 		Title       string `binding:"required"`
 		WatchUrl    string `json:"watch_url"`
 	}
+
+	ListReqQuery struct {
+		Limit  int `form:"limit"`
+		Offset int
+		Page   int `form:"page"`
+	}
 )
