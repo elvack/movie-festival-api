@@ -18,19 +18,26 @@ func Run(db database.DB) (err error) {
 	router := gin.Default()
 	router.Use(cors.New(corsConfig))
 	router.GET("", rootController.Index)
-	adminGroup := router.Group("admin")
+	adminsGroup := router.Group("admins")
 	{
-		authGroup := adminGroup.Group("auth")
+		authGroup := adminsGroup.Group("auth")
 		{
 			authGroup.POST("sign-in", adminController.SignIn)
 			authGroup.DELETE("sign-out", authorize(db.GormDb), adminController.SignOut)
 		}
-		moviesGroup := adminGroup.Group("movies")
+		moviesGroup := adminsGroup.Group("movies")
 		{
 			moviesGroup.POST("", authorize(db.GormDb), movieController.Create)
 		}
 	}
 	router.GET("health", healthController.Check)
 	router.Static("public", "./public")
+	usersGroup := router.Group("users")
+	{
+		moviesGroup := usersGroup.Group("movies")
+		{
+			moviesGroup.GET("", authorize(db.GormDb), movieController.List)
+		}
+	}
 	return router.Run()
 }

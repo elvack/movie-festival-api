@@ -8,6 +8,7 @@ import (
 type (
 	IRepo interface {
 		Create(movie *movieModel.Movie) (err error)
+		List(reqQuery *movieModel.ListReqQuery) (resData []movieModel.ListResData, count int64, err error)
 	}
 
 	repo struct {
