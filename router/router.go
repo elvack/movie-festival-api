@@ -28,6 +28,10 @@ func Run(db database.DB) (err error) {
 		moviesGroup := adminsGroup.Group("movies")
 		{
 			moviesGroup.POST("", authorize(db.GormDb), movieController.Create)
+			idGroup := moviesGroup.Group(":id")
+			{
+				idGroup.PUT("", authorize(db.GormDb), movieController.Update)
+			}
 		}
 	}
 	router.GET("health", healthController.Check)

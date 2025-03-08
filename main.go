@@ -18,7 +18,7 @@ func main() {
 			log.Fatal(err)
 		}
 	}()
-	if err := router.Run(db); err != nil {
+	if err = router.Run(db); err != nil {
 		log.Fatal(err)
 	}
 }

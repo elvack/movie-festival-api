@@ -7,14 +7,13 @@ type (
 		Total   int64 `json:"total"`
 	}
 
-	res struct {
+	response struct {
 		Data    any    `json:"data"`
 		Message string `json:"message"`
 	}
 
-	resWithPage struct {
-		Data    any    `json:"data"`
-		Message string `json:"message"`
+	responseWithPage struct {
+		response
 		Page    page   `json:"page"`
 	}
 )
