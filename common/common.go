@@ -8,4 +8,5 @@ const (
 	SignedInSuccessfully       = "signed in successfully"
 	SignedOutSuccessfully      = "signed out successfully"
 	UnexpectedNewline          = "unexpected newline"
+	UpdatedSuccessfully        = "updated successfully"
 )
